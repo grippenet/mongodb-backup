@@ -8,3 +8,6 @@ build:
 
 run:
 	docker run --rm -it $(DOCKER_ORG)/$(DOCKER_REPO):$(VERSION)
+
+push:
+	docker push $(DOCKER_ORG)/$(DOCKER_REPO):$(VERSION)

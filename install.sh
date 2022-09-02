@@ -13,8 +13,8 @@ rm -r /var/lib/apt/lists /var/cache/apt/archives
 
 echo "Installing S3CLI"
 S3CLI=/usr/local/bin/s3cli
-wget -O $S3CLI -q https://s3cli-artifacts.s3.amazonaws.com/s3-0.0.4-linux-amd64 
-echo "9825b2c32bcf081c51842c3c2bdf69789b263644fde07c3425fbe725fbaf3788  $S3CLI" | sha256sum -c
+wget -O $S3CLI -q https://s3cli-artifacts.s3.amazonaws.com/s3cli-0.0.151-linux-amd64 
+echo "e5eceadada910513e221e4c0a0d1dd3a33f8cfe2049229c3446690a8f722a3c1  $S3CLI" | sha256sum -c
 chmod u+x $S3CLI
 
 echo "Installing age"
