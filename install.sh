@@ -11,7 +11,7 @@ apt-get update
 apt-get upgrade -y
 rm -r /var/lib/apt/lists /var/cache/apt/archives
 
-echo "Installing S3CLI"
+echo "Installing S3CLI (https://github.com/cloudfoundry/bosh-s3cli)"
 S3CLI=/usr/local/bin/s3cli
 wget -O $S3CLI -q https://s3cli-artifacts.s3.amazonaws.com/s3cli-0.0.151-linux-amd64 
 echo "e5eceadada910513e221e4c0a0d1dd3a33f8cfe2049229c3446690a8f722a3c1  $S3CLI" | sha256sum -c
