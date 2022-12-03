@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-apt-get update 
-apt-get install -y wget curl gnupg
+apt-get update
+apt-get install -y wget curl gnupg postgresql-client-13
 wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
 echo "deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main" > /etc/apt/sources.list.d/mongodb-org-5.0.list
 apt-get update
@@ -10,12 +10,11 @@ apt-get install -y mongodb-database-tools
 apt-get update
 apt-get upgrade -y
 rm -r /var/lib/apt/lists /var/cache/apt/archives
-
-echo "Installing S3CLI (https://github.com/cloudfoundry/bosh-s3cli)"
-S3CLI=/usr/local/bin/s3cli
-wget -O $S3CLI -q https://s3cli-artifacts.s3.amazonaws.com/s3cli-0.0.151-linux-amd64 
-echo "e5eceadada910513e221e4c0a0d1dd3a33f8cfe2049229c3446690a8f722a3c1  $S3CLI" | sha256sum -c
-chmod u+x $S3CLI
+rm -r /usr/share/postgresql/13/ /usr/share/doc/postgresql-client-13 /usr/share/man/*
+echo "Installing MC"
+MC_CLI=/usr/local/bin/mc
+wget -O $MC_CLI -q https://dl.minio.io/client/mc/release/linux-amd64/mc 
+chmod u+x $MC_CLI
 
 echo "Installing age"
 AGE_BIN=/usr/local/bin/age
